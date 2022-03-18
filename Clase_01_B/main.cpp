@@ -1,8 +1,8 @@
 /**
- * Clase 01 - A
- * Definición básica de una clase
+ * Clase 01 - B
+ * Utilización de constructores y destructores
  * Autor: Rodrigo Tufiño <rtufino@ups.edu.ec>
- * Fecha: 17-03-2022
+ * Fecha: 18-03-2022
  */
 #include <iostream>
 
@@ -17,6 +17,9 @@ public:
     double radio;
     double getArea() const;
     double getPerimetro() const;
+    Circulo();
+    Circulo(double radio);
+    Circulo(const Circulo& circulo);
 };
 
 /**
@@ -33,6 +36,18 @@ double Circulo::getPerimetro() const{
     const double PI = 3.1416;
     return (2 * PI * radio);
 }
+// Definición del constructor por defecto
+Circulo::Circulo(){
+    radio = 1;
+}
+// Definición del constructor con parámetro
+Circulo::Circulo(double r):radio(r){
+
+}
+// Definición de un constructor de copia
+Circulo::Circulo(const Circulo& cr): radio(cr.radio){
+
+}
 
 /**
  * Aplicación
@@ -43,28 +58,34 @@ double Circulo::getPerimetro() const{
 
 int main()
 {
-    // Creando un objeto (instanciando)
+    // Creando un objeto (constructor por defecto)
     Circulo circulo1;
-    // Estableciendo un valor a su atributo
-    circulo1.radio = 10.0;
-    // Aplicando sus funciones miembros
     cout << "Circulo 1:" << endl;
     cout << "Radio = ";
     cout << circulo1.radio << endl;
     cout << "Área = ";
     cout << circulo1.getArea() << endl;
     cout << "Perímetro = ";
-    cout << circulo1.getPerimetro() << endl;
+    cout << circulo1.getPerimetro() << endl << endl;
 
-    // Instanciando otro objeto
-    Circulo circulo2;
-    circulo2.radio = 15;
+    // Creando un objeto (constructor con parámetro)
+    Circulo circulo2(15);
     cout << "Circulo 2:" << endl;
     cout << "Radio = ";
     cout << circulo2.radio << endl;
     cout << "Área = ";
     cout << circulo2.getArea() << endl;
     cout << "Perímetro = ";
-    cout << circulo2.getPerimetro() << endl;
+    cout << circulo2.getPerimetro() << endl << endl;
+
+    // Creando un objeto (copia otro objeto)
+    Circulo circulo3(circulo2);
+    cout << "Circulo 3:" << endl;
+    cout << "Radio = ";
+    cout << circulo3.radio << endl;
+    cout << "Área = ";
+    cout << circulo3.getArea() << endl;
+    cout << "Perímetro = ";
+    cout << circulo3.getPerimetro() << endl;
     return 0;
 }

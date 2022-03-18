@@ -13,8 +13,11 @@ using namespace std;
  * Declaración de los miembros de la clase (atributos y métodos)
  */
 class Circulo{
+// Modificador de acceso
 public:
+    // Declaración de atributos
     double radio;
+    // Declaración de métodos
     double getArea() const;
     double getPerimetro() const;
 };

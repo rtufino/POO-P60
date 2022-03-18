@@ -20,6 +20,7 @@ public:
     Circulo();
     Circulo(double radio);
     Circulo(const Circulo& circulo);
+    ~Circulo();
 };
 
 /**
@@ -37,16 +38,22 @@ double Circulo::getPerimetro() const{
     return (2 * PI * radio);
 }
 // Definición del constructor por defecto
-Circulo::Circulo(){
-    radio = 1;
+Circulo::Circulo():radio(0){
+    cout << "Constructor por defecto" << endl;
 }
 // Definición del constructor con parámetro
 Circulo::Circulo(double r):radio(r){
-
+   cout << "Constructor parametrizado" << endl;
 }
 // Definición de un constructor de copia
 Circulo::Circulo(const Circulo& cr): radio(cr.radio){
-
+    cout << "Constructor por copia" << endl;
+}
+// Definición del destructor
+Circulo::~Circulo()
+{
+    cout << "Circulo (r=" << radio << ") ";
+    cout << "destruido " << endl;
 }
 
 /**
@@ -60,7 +67,6 @@ int main()
 {
     // Creando un objeto (constructor por defecto)
     Circulo circulo1;
-    cout << "Circulo 1:" << endl;
     cout << "Radio = ";
     cout << circulo1.radio << endl;
     cout << "Área = ";
@@ -70,7 +76,6 @@ int main()
 
     // Creando un objeto (constructor con parámetro)
     Circulo circulo2(15);
-    cout << "Circulo 2:" << endl;
     cout << "Radio = ";
     cout << circulo2.radio << endl;
     cout << "Área = ";
@@ -80,7 +85,6 @@ int main()
 
     // Creando un objeto (copia otro objeto)
     Circulo circulo3(circulo2);
-    cout << "Circulo 3:" << endl;
     cout << "Radio = ";
     cout << circulo3.radio << endl;
     cout << "Área = ";
